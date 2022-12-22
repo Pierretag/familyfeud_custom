@@ -12,6 +12,7 @@ function Crosses(props: { Team: Team }) {
         } else {
             setStrikes(0);
         }
+        console.log(strikes);
     };
 
     return (
@@ -20,7 +21,11 @@ function Crosses(props: { Team: Team }) {
                 {[0, 1, 2].map((crossNumber) => {
                     return (
                         <img
-                            src={id >= strikes ? GreyCrossImage : RedCrossImage}
+                            src={
+                                crossNumber >= strikes
+                                    ? GreyCrossImage
+                                    : RedCrossImage
+                            }
                             id={`team${id}cross${crossNumber}`}
                             key={`team${id}cross${crossNumber}`}
                             onClick={updateState}

@@ -3,7 +3,7 @@ function Awnser(props: Props) {
     const score = props.Score;
 
     return (
-        <div className="AnwserBox">
+        <div className="AwnserBox">
             <span>{title}</span>
             <span>{score}</span>
         </div>

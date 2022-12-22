@@ -38,15 +38,19 @@ function Board(props?: any) {
                 style={{ backgroundImage: `url(${BoardImage})` }}
             >
                 <div className="ScoreBoard">
-                    <ScorePanel Score={teams[0].currentScore} />
-                    <ScorePanel Score={0} />
-                    <ScorePanel Score={teams[1].currentScore} />
+                    <ScorePanel key="1" Score={teams[0].currentScore} />
+                    <ScorePanel key="2" Score={0} />
+                    <ScorePanel key="3" Score={teams[1].currentScore} />
                 </div>
 
                 <div className="AwnserGrid">
                     {questions[0].answers.map((answer) => {
                         return (
-                            <Awnser Title={answer.title} Score={answer.score} />
+                            <Awnser
+                                key={answer.title}
+                                Title={answer.title}
+                                Score={answer.score}
+                            />
                         );
                     })}
                 </div>
