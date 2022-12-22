@@ -1,38 +1,88 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+    height: 40vmin;
+    pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
 
 .App-link {
-  color: #61dafb;
+    color: #61dafb;
+}
+
+.ScoreBoard {
+    display: flex;
+    justify-content: space-between;
+    padding: 1vh 2vw;
+}
+
+.AwnserGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2vh 1vw;
+    grid-auto-rows: minmax(100px, auto);
+}
+.AnwserBox {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.ScorePanel {
+    width: 3vw;
+    padding: 4vh 9vw;
+    display: block;
+    background: #1a2dad;
+    border: 5px solid #0c0c2b;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 38px;
+}
+
+.BoardActive {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 80vh;
+    background-position: top;
+    background-size: 100vw 80vh;
+}
+.Naviguation {
+    position: fixed;
+    display: flex;
+    height: 20vh;
+    width: 100vw;
+    bottom: 0;
+    background-color: #000;
+    justify-content: space-between;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+span {
+    color: white;
 }
