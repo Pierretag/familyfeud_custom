@@ -52,10 +52,19 @@
     align-items: center;
 
     height: 8vh;
+    width: 21vw;
     background-color: #1a2dad;
     border: 5px solid #ffffff;
     border-radius: 2px;
     font-size: 38px;
+}
+
+.AwnserBox .hidden {
+    background-color: #030f5c;
+}
+
+.AwnserBox .visible {
+    background-color: #1a2dad;
 }
 
 .AwnserBox span {

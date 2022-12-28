@@ -5,32 +5,64 @@ import Crosses from './components/Crosses';
 import ScorePanel from './components/ScorePanel';
 import { questions } from './data';
 
-const onKeyDownHandler: any = (ev: KeyboardEvent) => {
-    if (ev.key.toLocaleLowerCase() === 'r') {
-        console.log('reset');
-    } else {
-        console.log('press');
-    }
-};
-
 function Board(props?: any) {
+    /**
+     * Setters
+     */
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+
     const [teams, setTeams]: [Team[], (teams: Team[]) => void] = useState([
         {
             id: 1,
-            strikes: 0,
             currentScore: 0,
+            strikes: 0,
         },
         {
             id: 2,
-            strikes: 0,
             currentScore: 0,
+            strikes: 0,
         },
     ]);
 
-    useEffect(() => {
-        document.addEventListener('keydown', onKeyDownHandler);
-    });
+    /**
+     *
+     *  Listeners & effects
+     */
+    const onKeyDownHandler: any = (ev: KeyboardEvent) => {
+        switch (ev.key.toLocaleLowerCase()) {
+            case 'r':
+                console.log('reset');
+                setCurrentQuestionIndex(0);
+                break;
+            case 'l':
+                console.log('next qestion');
+                currentQuestionIndex !== Awnser.length
+                    ? setCurrentQuestionIndex((prevIndex) => prevIndex + 1)
+                    : console.log('nope');
 
+                console.log(`now current index is ${currentQuestionIndex}`);
+                break;
+
+            case 'j':
+                console.log('previous question');
+                currentQuestionIndex !== 0
+                    ? setCurrentQuestionIndex((prevIndex) => prevIndex - 1)
+                    : console.log('nope');
+                console.log(`now current index is ${currentQuestionIndex}`);
+                break;
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener('keydown', onKeyDownHandler);
+        return () => {
+            window.removeEventListener('keydown', onKeyDownHandler);
+        };
+    }, []);
+
+    /**
+     * Board
+     */
     return (
         <>
             <div
@@ -44,7 +76,7 @@ function Board(props?: any) {
                 </div>
 
                 <div className="AwnserGrid">
-                    {questions[0].answers.map((answer) => {
+                    {questions[currentQuestionIndex].answers.map((answer) => {
                         return (
                             <Awnser
                                 key={answer.title}
@@ -62,16 +94,15 @@ function Board(props?: any) {
                     <span>Quelle est la taille ?</span>
                 </div>
 
-                <Crosses Team={teams[0]} />
+                <Crosses Team={teams[1]} />
             </div>
         </>
     );
 }
 
 export default Board;
-
 export interface Team {
     id: number;
-    strikes: number;
     currentScore: number;
+    strikes: number;
 }

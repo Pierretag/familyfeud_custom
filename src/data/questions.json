@@ -1,24 +1,54 @@
 [
-  {
-    "id": 1,
-    "title": "quel est le plus gros red flag Tinder ?",
-    "answers": [
-      {
-        "title": "pas de photo",
-        "score": 56
-      },
-      {
-        "title": "Moche",
-        "score": 34
-      },
-      {
-        "title": "🇫🇷 dans les commentaires",
-        "score": 12
-      },
-      {
-        "title": "attachainte",
-        "score": 1
-      }
-    ]
-  }
+    {
+        "id": 1,
+        "title": "quel est le plus gros red flag Tinder ?",
+        "answers": [
+            {
+                "title": "pas de photo",
+                "score": 56
+            },
+            {
+                "title": "Moche",
+                "score": 34
+            },
+            {
+                "title": "🇫🇷 dans les commentaires",
+                "score": 12
+            },
+            {
+                "title": "attachainte",
+                "score": 1
+            },
+            {
+                "title": "HEYH",
+                "score": 2
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Qui est la personne la plus attirante ? ",
+        "answers": [
+            {
+                "title": "Ines",
+                "score": 56
+            },
+            {
+                "title": "Alexandre Quillacq",
+                "score": 34
+            },
+            {
+                "title": "Pierre Neveu1",
+                "score": 12
+            },
+            {
+                "title": "Pierre Neveu2",
+                "score": 1
+            },
+            {
+                "title": "Pierre Neveu3",
+                "score": 2
+            }
+        ]
+    }
 ]
