@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { BoardImage } from './assets';
 import Awnser from './components/Awnser';
 import Crosses from './components/Crosses';
 import ScorePanel from './components/ScorePanel';
 import { questions } from './data';
+import { selectTeam } from './reduxState/TeamSlice';
 
 function Board(props?: any) {
     /**
@@ -11,19 +13,8 @@ function Board(props?: any) {
      */
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
-    const [teams, setTeams]: [Team[], (teams: Team[]) => void] = useState([
-        {
-            id: 1,
-            currentScore: 0,
-            strikes: 0,
-        },
-        {
-            id: 2,
-            currentScore: 0,
-            strikes: 0,
-        },
-    ]);
-
+    const team1Selector = useSelector(selectTeam(0));
+    const team2Selector = useSelector(selectTeam(1));
     /**
      *
      *  Listeners & effects
@@ -70,9 +61,9 @@ function Board(props?: any) {
                 style={{ backgroundImage: `url(${BoardImage})` }}
             >
                 <div className="ScoreBoard">
-                    <ScorePanel key="1" Score={teams[0].currentScore} />
+                    <ScorePanel key="1" Score={team1Selector.score} />
                     <ScorePanel key="2" Score={0} />
-                    <ScorePanel key="3" Score={teams[1].currentScore} />
+                    <ScorePanel key="3" Score={team2Selector.score} />
                 </div>
 
                 <div className="AwnserGrid">
@@ -88,21 +79,16 @@ function Board(props?: any) {
                 </div>
             </div>
             <div className="Naviguation">
-                <Crosses Team={teams[0]} />
+                <Crosses Team={team1Selector} />
 
                 <div className="Question">
-                    <span>Quelle est la taille ?</span>
+                    <span>{questions[currentQuestionIndex].title}</span>
                 </div>
 
-                <Crosses Team={teams[1]} />
+                <Crosses Team={team2Selector} />
             </div>
         </>
     );
 }
 
 export default Board;
-export interface Team {
-    id: number;
-    currentScore: number;
-    strikes: number;
-}

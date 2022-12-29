@@ -1,18 +1,14 @@
-import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { GreyCrossImage, RedCrossImage } from '../assets';
-import { Team } from '../Board';
+import { useAppDispatch } from '../reduxState/Store';
+import { Team, StrikesIncrement, selectTeam } from '../reduxState/TeamSlice';
 
 function Crosses(props: { Team: Team }) {
-    const id = props.Team.id;
-    const [strikes, setStrikes] = useState(0);
-
+    const id: number = props.Team.id;
+    const team = useSelector(selectTeam(id));
+    const dispatch = useAppDispatch();
     const updateState = () => {
-        if (strikes <= 2) {
-            setStrikes(strikes + 1);
-        } else {
-            setStrikes(0);
-        }
-        console.log(strikes);
+        dispatch(StrikesIncrement(id));
     };
 
     return (
@@ -22,7 +18,7 @@ function Crosses(props: { Team: Team }) {
                     return (
                         <img
                             src={
-                                crossNumber >= strikes
+                                crossNumber >= team.strikes
                                     ? GreyCrossImage
                                     : RedCrossImage
                             }
