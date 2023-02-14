@@ -1,3 +1,7 @@
+
+# Introduction 
+This is a personnal project and have nothing serious inside. We organised a NYE party and to entertain our guest I created a Family feud like game with custom questions. 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
